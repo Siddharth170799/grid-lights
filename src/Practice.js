@@ -5,8 +5,8 @@ const Practice = () => {
   const [data1, setData1] = useState(data);
 
   const handleChange = (...args) => {
-    const data = data1.map((item) => {
-      if (args.includes(item.id)) {
+    const data = data1.map((item,index) => {
+      if (args.includes(index)) {
         return {
           ...item,
           display: !item.display,
