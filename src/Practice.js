@@ -21,7 +21,7 @@ const Practice = () => {
 
   return (
     <div className="grid-wrapper">
-      <h1>Grid Lights</h1>
+      <h1 style={{color:"whitesmoke"}}>Grid Lights</h1>
       <div className="grid-container">
         {data1.map((item, index) => (
           <div
