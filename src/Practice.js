@@ -37,7 +37,7 @@ const Practice = () => {
           ></div>
         ))}
       </div>
-      <button onClick={() => setData1(data)}>Reset</button>
+      <button onClick={() => setData1(new Array(25).fill({}))}>Reset</button>
     </div>
   );
 };
