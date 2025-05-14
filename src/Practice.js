@@ -1,12 +1,20 @@
+
 import React, { useState } from "react";
 import data from "./data";
 
 const Practice = () => {
   const [data1, setData1] = useState(data);
+  const columns = 5;
+  const handleChange = (index) => {
+    const newData = data1.map((item, i) => {
+      const isSame = i === index;
+      const isLeft = i == index - 1 && index % columns != 0;
 
-  const handleChange = (...args) => {
-    const data = data1.map((item,index) => {
-      if (args.includes(index)) {
+      const isRight = i == index + 1 && (index + 1) % columns != 0;
+      const isTop = i === index - columns;
+      const isBottom = i === index + columns;
+
+      if (isSame || isLeft || isRight || isTop || isBottom) {
         return {
           ...item,
           display: !item.display,
@@ -16,24 +24,22 @@ const Practice = () => {
       }
     });
 
-    setData1(data);
+    setData1(newData);
   };
 
   return (
     <div className="grid-wrapper">
-      <h1 style={{color:"whitesmoke"}}>Grid Lights</h1>
+      <h1 style={{ color: "whitesmoke" }}>Grid Lights</h1>
       <div className="grid-container">
         {data1.map((item, index) => (
           <div
             key={index}
             className={`grid-box ${item.display ? "active" : ""}`}
-            onClick={() =>
-              handleChange(index, index - 1, index + 1, index - 5, index + 5)
-            }
+            onClick={() => handleChange(index)}
           ></div>
         ))}
       </div>
-      <button onClick={()=>setData1(data)}>Reset</button>
+      <button onClick={() => setData1(data)}>Reset</button>
     </div>
   );
 };
