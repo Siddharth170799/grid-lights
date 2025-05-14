@@ -1,15 +1,13 @@
-
 import React, { useState } from "react";
-import data from "./data";
+
 
 const Practice = () => {
-  const [data1, setData1] = useState(data);
+  const [data1, setData1] = useState(new Array(25).fill({}));
   const columns = 5;
   const handleChange = (index) => {
     const newData = data1.map((item, i) => {
       const isSame = i === index;
-      const isLeft = i == index - 1 && index % columns != 0;
-
+      const isLeft = i == index - 1 && index % columns != 0 ? true : false;
       const isRight = i == index + 1 && (index + 1) % columns != 0;
       const isTop = i === index - columns;
       const isBottom = i === index + columns;
